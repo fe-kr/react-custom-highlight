@@ -1,1 +1,1 @@
-export const useCustomHighlight = {};
+export { useCustomHighlight } from "./hooks";

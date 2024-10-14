@@ -1,9 +1,10 @@
 {
-  "include": ["src"],
+  "include": ["src", "global.d.ts"],
   "exclude": ["node_modules", "dist", "coverage", ".github"],
   "compilerOptions": {
+    "baseUrl": ".",
     "target": "ESNext",
-    "lib": ["ESNext", "DOM"],
+    "lib": ["ESNext", "DOM", "DOM.Iterable"],
     "module": "ESNext",
     "sourceMap": true,
     "importHelpers": true,
