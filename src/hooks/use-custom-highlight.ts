@@ -1,22 +1,25 @@
 import { useEffect, useRef, useState, DependencyList } from "react";
-import { useFilterRegExp } from "./use-filter-regexp";
-import { CustomHighlight, TextTreeWalker } from "../utils";
+import { useTextRegExp } from "./use-text-regexp";
+import { CustomHighlight } from "src/utils/custom-highlight";
+import { CustomTreeWalker } from "src/utils/custom-tree-walker";
+import { UseCustomHighlightParams } from "src/types";
 
-const defaultParams: CustomHighlightParams = {
+const defaultParams: UseCustomHighlightParams = {
   text: "",
   name: "",
   isDeferred: true,
-  isCaseSensitive: false,
   isDebugMode: false,
+  isCaseSensitive: false,
+  shouldResetOnUnmount: true,
 };
 
 export const useCustomHighlight = (
-  initParams: CustomHighlightParams,
+  initParams: UseCustomHighlightParams,
   deps: DependencyList,
 ) => {
   const containerRef = useRef(null);
   const [params, setParams] = useState({ ...defaultParams, ...initParams });
-  const textRegExp = useFilterRegExp(params);
+  const textRegExp = useTextRegExp(params);
 
   useEffect(() => {
     setParams((params) => ({ ...params, ...initParams }));
@@ -24,8 +27,10 @@ export const useCustomHighlight = (
   }, deps);
 
   useEffect(() => {
-    if (containerRef.current && textRegExp && params.name) {
-      const treeWalker = new TextTreeWalker(containerRef.current);
+    if (!params.name) return;
+
+    if (containerRef.current && textRegExp) {
+      const treeWalker = new CustomTreeWalker(containerRef.current);
       const { highlight } = new CustomHighlight(
         treeWalker,
         textRegExp,
@@ -33,12 +38,21 @@ export const useCustomHighlight = (
       );
 
       CSS.highlights.set(params.name, highlight);
+    } else if (!textRegExp) {
+      CSS.highlights.delete(params.name);
     }
 
     return () => {
-      CSS.highlights.delete(params.name);
+      if (params.shouldResetOnUnmount) {
+        CSS.highlights.delete(params.name);
+      }
     };
-  }, [textRegExp, params.name, params.isDebugMode]);
+  }, [
+    textRegExp,
+    params.name,
+    params.shouldResetOnUnmount,
+    params.isDebugMode,
+  ]);
 
   return containerRef;
 };

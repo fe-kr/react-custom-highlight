@@ -1,13 +1,20 @@
 export class CustomHighlight {
-  private readonly ranges: Range[] = [];
+  private ranges: Range[];
 
   constructor(
     readonly treeWalker: IterableClass<Node>,
     readonly regExp: RegExp,
-    private readonly isDebugMode: boolean,
+    readonly debug: boolean,
   ) {
-    for (const treeNode of treeWalker) {
-      this.filterRanges(treeNode, regExp);
+    this.ranges = [];
+
+    try {
+      for (const treeNode of treeWalker) {
+        this.filterRanges(treeNode, regExp);
+      }
+    } catch (err) {
+      if (debug) console.error(err);
+      this.ranges = [];
     }
   }
 
@@ -16,30 +23,24 @@ export class CustomHighlight {
   }
 
   private filterRanges(node: Node, regExp: RegExp) {
-    try {
-      if (!node.textContent) return;
+    if (!node.textContent) return;
 
-      let searchIndex = 0;
+    let searchIndex = 0;
 
-      while (searchIndex < node.textContent.length) {
-        const lastIndex = node.textContent.slice(searchIndex).search(regExp);
+    while (searchIndex < node.textContent.length) {
+      const lastIndex = node.textContent.slice(searchIndex).search(regExp);
 
-        if (lastIndex === -1) {
-          break;
-        }
+      if (lastIndex === -1) break;
 
-        const startIndex = searchIndex + lastIndex;
-        const endIndex = startIndex + regExp.source.length;
+      const startIndex = searchIndex + lastIndex;
+      const endIndex = startIndex + regExp.source.length;
 
-        const range = new Range();
-        range.setStart(node, startIndex);
-        range.setEnd(node, endIndex);
+      const range = new Range();
+      range.setStart(node, startIndex);
+      range.setEnd(node, endIndex);
 
-        this.ranges.push(range);
-        searchIndex = endIndex;
-      }
-    } catch (err: unknown) {
-      if (this.isDebugMode) console.error(err as Error);
+      this.ranges.push(range);
+      searchIndex = endIndex;
     }
   }
 }
