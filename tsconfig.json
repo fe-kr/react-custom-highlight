@@ -1,8 +1,11 @@
 {
   "include": ["src", "global.d.ts"],
-  "exclude": ["node_modules", "dist", ".github"],
+  "exclude": ["node_modules", "dist", ".github", "tests"],
   "compilerOptions": {
     "baseUrl": ".",
+    "paths": {
+      "src/*": ["src/*"]
+    },
     "target": "ESNext",
     "lib": ["ESNext", "DOM", "DOM.Iterable"],
     "module": "ESNext",
