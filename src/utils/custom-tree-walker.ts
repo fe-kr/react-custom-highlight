@@ -1,3 +1,5 @@
+import { IterableClass } from "src/types";
+
 export class CustomTreeWalker implements IterableClass<Node> {
   private readonly walker: TreeWalker;
 

@@ -2,8 +2,6 @@
 
 React hook for highlighting nodes (see [Custom Highlight API](https://developer.mozilla.org/en-US/docs/Web/API/CSS_Custom_Highlight_API)).
 
-Check out a demo [here](https://fe-kr.github.io/react-custom-highlight).
-
 ## ⚠️ Warning
 This package is based on the Custom Highlight API, which may not be supported by some [browsers](https://developer.mozilla.org/en-US/docs/Web/API/CSS_Custom_Highlight_API#browser_compatibility).
 

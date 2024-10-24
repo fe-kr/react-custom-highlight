@@ -1,3 +1,5 @@
+import { IterableClass } from "src/types";
+
 export class CustomHighlight {
   private ranges: Range[];
 

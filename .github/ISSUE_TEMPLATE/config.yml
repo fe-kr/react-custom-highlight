@@ -1,0 +1,13 @@
+blank_issues_enabled: false
+contact_links: []
+issue_templates:
+  - name: Feature Request
+    description: Suggest a new feature for this project
+    labels: feature
+    assignees: ''
+    template: feature_request.md
+  - name: Bug Report
+    description: Create a report to help us improve
+    labels: bug
+    assignees: ''
+    template: bug_report.md

@@ -1,6 +1,6 @@
 {
-  "include": ["src", "global.d.ts"],
-  "exclude": ["node_modules", "dist", ".github"],
+  "include": ["src"],
+  "exclude": ["node_modules", "dist", ".github", "docs", ".husky"],
   "compilerOptions": {
     "baseUrl": ".",
     "target": "ESNext",
