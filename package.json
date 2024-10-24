@@ -1,0 +1,61 @@
+{
+  "name": "react-custom-highlight",
+  "version": "1.0.0",
+  "description": "React highlight text library",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "prepare": "husky"
+  },
+  "author": "fe-kr <fekr.dev@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fe-kr/react-custom-highlight"
+  },
+  "keywords": [
+    "react",
+    "highlight",
+    "custom",
+    "text",
+    "hooks"
+  ],
+  "bugs": {
+    "url": "https://github.com/fe-kr/react-custom-highlight/issues"
+  },
+  "homepage": "https://github.com/fe-kr/react-custom-highlight",
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --quiet --fix",
+      "prettier --write --ignore-unknown"
+    ],
+    "*.{json,html}": [
+      "prettier --write --ignore-unknown"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "peerDependencies": {
+    "react": "^18.3.1"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.5.0",
+    "@commitlint/config-conventional": "^19.5.0",
+    "@eslint/js": "^9.12.0",
+    "@types/react": "^18.3.11",
+    "eslint": "^9.12.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "eslint-plugin-react": "^7.37.1",
+    "eslint-plugin-react-hooks": "^5.0.0",
+    "globals": "^15.11.0",
+    "husky": "^9.1.6",
+    "prettier": "3.3.3",
+    "typescript-eslint": "^8.8.1"
+  }
+}
