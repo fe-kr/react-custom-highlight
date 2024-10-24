@@ -11,3 +11,7 @@ export type UseTextRegExpParams = Pick<
   UseCustomHighlightParams,
   "text" | "isDeferred" | "isCaseSensitive"
 >;
+
+export interface IterableClass<T> {
+  [Symbol.iterator](): Iterator<T>;
+}
