@@ -5,6 +5,7 @@ export interface UseCustomHighlightParams {
   isDebugMode?: boolean;
   isCaseSensitive?: boolean;
   shouldResetOnUnmount?: boolean;
+  nodeFilter?: NodeFilter;
 }
 
 export type UseTextRegExpParams = Pick<

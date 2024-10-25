@@ -11,6 +11,7 @@ const defaultParams: UseCustomHighlightParams = {
   isDebugMode: false,
   isCaseSensitive: false,
   shouldResetOnUnmount: true,
+  nodeFilter: undefined,
 };
 
 export const useCustomHighlight = (
@@ -30,21 +31,24 @@ export const useCustomHighlight = (
     if (!params.name) return;
 
     if (containerRef.current && textRegExp) {
-      const treeWalker = new CustomTreeWalker(containerRef.current);
+      const treeWalker = new CustomTreeWalker(
+        containerRef.current,
+        params.nodeFilter,
+      );
       const { highlight } = new CustomHighlight(
         treeWalker,
         textRegExp,
         params.isDebugMode!,
       );
 
-      CSS.highlights.set(params.name, highlight);
+      CSS.highlights?.set(params.name, highlight);
     } else if (!textRegExp) {
-      CSS.highlights.delete(params.name);
+      CSS.highlights?.delete(params.name);
     }
 
     return () => {
       if (params.shouldResetOnUnmount) {
-        CSS.highlights.delete(params.name);
+        CSS.highlights?.delete(params.name);
       }
     };
   }, [
@@ -52,6 +56,7 @@ export const useCustomHighlight = (
     params.name,
     params.shouldResetOnUnmount,
     params.isDebugMode,
+    params.nodeFilter,
   ]);
 
   return containerRef;

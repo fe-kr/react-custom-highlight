@@ -88,6 +88,33 @@ describe(useCustomHighlight.name, () => {
     expect(highlightsMock.delete).toHaveBeenCalledWith(props.name);
   });
 
+  test("should receive nodeFilter", () => {
+    const props: UseCustomHighlightParams = {
+      name: "custom",
+      text: "text",
+      nodeFilter: ({ parentNode }) =>
+        parentNode?.nodeName !== "BUTTON"
+          ? NodeFilter.FILTER_ACCEPT
+          : NodeFilter.FILTER_REJECT,
+    };
+
+    const hook = renderHook(initialRender, { initialProps });
+    const [textNode] = render(
+      createElement("button", {
+        ref: hook.result.current,
+        children: props.text,
+      }),
+    ).getByText(props.text).childNodes;
+
+    hook.rerender(props);
+
+    expect(rangeMock.setStart).not.toHaveBeenCalledWith(textNode, 0);
+    expect(rangeMock.setEnd).not.toHaveBeenCalledWith(
+      textNode,
+      props.text.length,
+    );
+  });
+
   test("should receive shouldResetOnUnmount", () => {
     const props: UseCustomHighlightParams = {
       name: "custom",

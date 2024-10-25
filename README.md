@@ -9,6 +9,8 @@ This package is based on the Custom Highlight API, which may not be supported by
 
 ```
 npm install react-custom-highlight
+
+yarn add react-custom-highlight
 ```
 
 ## Usage
@@ -65,9 +67,8 @@ And the hook will mark all occurrences of `text` parameter within the container.
 | `isDeferred`          | Boolean                      |           | Text value should be wrapped with [useDeferredValue](https://react.dev/reference/react/useDeferredValue). Defaults to `true`                                                                                                                                                                                                                                                       |
 | `isDebugMode`           | Boolean                     |           | Debug mode flag for inspecting errors. Defaults to `false`                                                                                                                                                                                                                                                   |
 | `isCaseSensitive`            | Boolean                      |           | Search should be case sensitive. Defaults to `false`                                                                                                                                                                                                                                                                                                               |
-| `shouldResetOnUnmount`        | Boolean                     |           | Highlights should be cleared on hook container unmount. Defaults to `true`    
-
-
+| `shouldResetOnUnmount`        | Boolean                     |           | Highlights should be cleared on hook container unmount. Defaults to `true`                                                                                                                                                                                                                                                   |
+| `nodeFilter`            | (node: Node) => number                       |           | Function to filter nodes for avoid highlights (see [NodeFilter](https://developer.mozilla.org/en-US/docs/Web/API/NodeIterator/filter)). Omitted by default                                                                                                                                                                                                                                                                  
 ## License
 
 MIT.

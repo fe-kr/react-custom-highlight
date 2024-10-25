@@ -26,14 +26,18 @@ describe(useTextRegExp.name, () => {
     };
     const hook = renderHook(useTextRegExp, { initialProps });
 
+    expect(hook.result.current!.flags).not.toContain("i");
+  });
+
+  test("should not be case sensitive by default", () => {
+    const initialProps: UseTextRegExpParams = { text: "test" };
+    const hook = renderHook(useTextRegExp, { initialProps });
+
     expect(hook.result.current!.flags).toContain("i");
   });
 
-  test("should receive isDeferred", () => {
-    const initialProps: UseTextRegExpParams = {
-      text: "test",
-      isDeferred: true,
-    };
+  test("should be deferred by default", () => {
+    const initialProps: UseTextRegExpParams = { text: "test" };
 
     jest.spyOn(React, "useDeferredValue");
 
