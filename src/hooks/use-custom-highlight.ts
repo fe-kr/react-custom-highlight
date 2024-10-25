@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState, DependencyList } from "react";
 import { useTextRegExp } from "./use-text-regexp";
-import { CustomHighlight } from "src/utils/custom-highlight";
-import { CustomTreeWalker } from "src/utils/custom-tree-walker";
-import { UseCustomHighlightParams } from "src/types";
+import { CustomHighlight } from "../utils/custom-highlight";
+import { CustomTreeWalker } from "../utils/custom-tree-walker";
+import { UseCustomHighlightParams } from "../types";
 
 const defaultParams: UseCustomHighlightParams = {
   text: "",

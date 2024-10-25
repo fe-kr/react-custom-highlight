@@ -1,5 +1,5 @@
 import { useDeferredValue, useMemo } from "react";
-import { UseTextRegExpParams } from "src/types";
+import { UseTextRegExpParams } from "../types";
 
 const escapeRegExp = /[\\^$.*+?()[\]{}|]/g;
 

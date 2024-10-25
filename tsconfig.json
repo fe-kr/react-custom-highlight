@@ -1,11 +1,8 @@
 {
   "include": ["src"],
-  "exclude": ["node_modules", "dist", ".github", "tests", "docs", ".husky"],
+  "exclude": ["node_modules", "dist", ".github", "tests", ".husky"],
   "compilerOptions": {
     "baseUrl": ".",
-    "paths": {
-      "src/*": ["src/*"]
-    },
     "target": "ESNext",
     "lib": ["ESNext", "DOM", "DOM.Iterable"],
     "module": "ESNext",

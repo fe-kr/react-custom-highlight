@@ -9,7 +9,9 @@ This package is based on the Custom Highlight API, which may not be supported by
 
 ```
 npm install react-custom-highlight
+```
 
+```
 yarn add react-custom-highlight
 ```
 

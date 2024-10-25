@@ -1,4 +1,4 @@
-import { IterableClass } from "src/types";
+import { IterableClass } from "../types";
 
 export class CustomHighlight {
   private ranges: Range[];
