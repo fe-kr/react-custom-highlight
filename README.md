@@ -4,7 +4,7 @@
 [![NPM License](https://img.shields.io/npm/l/react-custom-highlight.svg)](https://www.npmjs.com/package/react-custom-highlight)
 [![NPM Downloads](https://img.shields.io/npm/dm/react-custom-highlight.svg)](https://www.npmjs.com/package/react-custom-highlight)
 
-React hook for highlighting nodes (see [Custom Highlight API](https://developer.mozilla.org/en-US/docs/Web/API/CSS_Custom_Highlight_API)).
+React hook for highlighting text ranges on a document (see [Custom Highlight API](https://developer.mozilla.org/en-US/docs/Web/API/CSS_Custom_Highlight_API)).
 
 ## ⚠️ Warning
 This package is based on the Custom Highlight API, which may not be supported by some [browsers](https://developer.mozilla.org/en-US/docs/Web/API/CSS_Custom_Highlight_API#browser_compatibility).
