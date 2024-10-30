@@ -1,6 +1,6 @@
 {
   "name": "react-custom-highlight",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "React highlight text library",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -8,7 +8,8 @@
   "scripts": {
     "build": "rollup -c rollup.config.js",
     "prepare": "husky",
-    "test": "jest"
+    "test": "jest",
+    "prepublishOnly": "npm run build"
   },
   "author": "fe-kr <fekr.dev@gmail.com>",
   "license": "MIT",
@@ -16,6 +17,10 @@
     "type": "git",
     "url": "https://github.com/fe-kr/react-custom-highlight"
   },
+  "files": [
+    "LICENSE",
+    "README.md"
+  ],
   "keywords": [
     "react",
     "highlight",
