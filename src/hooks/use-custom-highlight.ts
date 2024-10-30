@@ -1,4 +1,10 @@
-import { useEffect, useRef, useState, DependencyList } from "react";
+import {
+  useEffect,
+  useRef,
+  useState,
+  DependencyList,
+  MutableRefObject,
+} from "react";
 import { useTextRegExp } from "./use-text-regexp";
 import { CustomHighlight } from "../utils/custom-highlight";
 import { CustomTreeWalker } from "../utils/custom-tree-walker";
@@ -14,11 +20,11 @@ const defaultParams: UseCustomHighlightParams = {
   nodeFilter: undefined,
 };
 
-export const useCustomHighlight = (
+export const useCustomHighlight = <T extends Node>(
   initParams: UseCustomHighlightParams,
   deps: DependencyList,
-) => {
-  const containerRef = useRef(null);
+): MutableRefObject<T | null> => {
+  const containerRef = useRef<T>(null);
   const [params, setParams] = useState({ ...defaultParams, ...initParams });
   const textRegExp = useTextRegExp(params);
 
